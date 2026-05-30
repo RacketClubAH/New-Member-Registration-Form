@@ -13,14 +13,11 @@
       --surface: #fbf9f5;
       --surface-2: #f1ece3;
       --border: rgba(78, 69, 58, 0.16);
-      --divider: rgba(78, 69, 58, 0.10);
       --text: #4a443d;
       --muted: #7b7369;
       --heading: #6a6358;
       --accent: #8a7e6d;
       --accent-dark: #655b4e;
-      --success: #315a45;
-      --radius-md: 14px;
       --radius-lg: 20px;
       --radius-full: 999px;
       --shadow: 0 18px 48px rgba(40, 30, 18, 0.08);
@@ -41,7 +38,7 @@
       padding: 24px;
     }
 
-    button, input, textarea { font: inherit; }
+    button, input { font: inherit; }
 
     .page {
       max-width: 980px;
@@ -51,7 +48,6 @@
       border-radius: 30px;
       box-shadow: var(--shadow);
       overflow: hidden;
-      backdrop-filter: blur(10px);
     }
 
     .top {
@@ -75,15 +71,13 @@
       font-size: 14px;
       font-weight: 700;
       padding: 15px 18px;
-      border-top: 1px solid rgba(255,255,255,0.45);
-      border-bottom: 1px solid rgba(78,69,58,0.06);
       text-align: center;
     }
 
     .content {
       padding: 28px 32px 32px;
       display: grid;
-      gap: 26px;
+      gap: 24px;
     }
 
     .grid {
@@ -92,7 +86,7 @@
       gap: 18px;
     }
 
-    .field, .panel, .success-card, .records {
+    .field, .panel {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
@@ -215,8 +209,7 @@
       color: var(--text);
     }
 
-    .signature-head,
-    .records-head {
+    .signature-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -240,8 +233,8 @@
       display: block;
     }
 
-    .actions,
-    .small-actions {
+    .small-actions,
+    .actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -257,11 +250,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       cursor: pointer;
-      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     }
-
-    .btn:hover,
-    .btn-soft:hover { transform: translateY(-1px); }
 
     .btn {
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
@@ -275,109 +264,19 @@
       color: var(--text);
     }
 
-    .success-card {
-      padding: 20px;
-      display: none;
-      gap: 14px;
-    }
-
-    .success-card.show { display: grid; }
-
-    .success-card h3,
-    .records h3 {
-      font-family: var(--font-display);
-      font-size: 30px;
-      color: var(--heading);
-      line-height: 1;
-    }
-
-    .success-card p,
-    .records p { color: var(--muted); }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .summary-item,
-    .record-row {
-      padding: 14px;
-      border-radius: 14px;
-      background: var(--surface-2);
-      border: 1px solid rgba(78,69,58,0.08);
-    }
-
-    .summary-item strong,
-    .record-row strong {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-
-    .summary-item span,
-    .record-row span {
-      font-size: 14px;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    .records {
-      padding: 22px;
-    }
-
-    .record-list {
-      display: grid;
-      gap: 12px;
-      max-height: 280px;
-      overflow: auto;
-    }
-
-    .record-row {
-      display: grid;
-      grid-template-columns: 1.3fr 1.2fr 1fr auto;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .record-row button {
-      min-height: 40px;
-      padding: 0 14px;
-      border-radius: var(--radius-full);
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .empty {
-      padding: 18px;
-      text-align: center;
-      color: var(--muted);
-      background: var(--surface-2);
-      border-radius: 14px;
-      border: 1px dashed rgba(78,69,58,0.14);
-    }
-
-    .footnote {
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--muted);
+    .actions {
+      justify-content: flex-end;
+      margin-top: 4px;
     }
 
     @media (max-width: 760px) {
       body { padding: 0; }
       .page { border-radius: 0; }
       .content, .top { padding-left: 18px; padding-right: 18px; }
-      .grid, .summary-grid, .record-row { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
       .membership-option { grid-template-columns: auto 1fr; }
       .membership-option span { grid-column: 2; }
-      .signature-head, .records-head, .actions { flex-direction: column; align-items: stretch; }
+      .signature-head, .actions { flex-direction: column; align-items: stretch; }
       .btn, .btn-soft { width: 100%; }
     }
   </style>
@@ -428,19 +327,19 @@
           <div class="section-title">Tennis adult Membership (+18 Years)</div>
           <div class="membership-list">
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT NON-PROPERTY OWNER|1200" required>
+              <input type="radio" name="membershipType" value="TENNIS ADULT NON-PROPERTY OWNER" required>
               <strong>TENNIS ADULT NON-PROPERTY OWNER</strong>
               <span>€1,200</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER SILVER|1080">
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER SILVER">
               <strong>TENNIS ADULT PROPERTY OWNER SILVER</strong>
               <span>€1,080</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER GOLD|1020">
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER GOLD">
               <strong>TENNIS ADULT PROPERTY OWNER GOLD</strong>
               <span>€1,020</span>
             </label>
@@ -474,252 +373,22 @@
           <canvas id="signaturePad"></canvas>
         </section>
 
-        <div class="actions" style="margin-top: 24px;">
-          <button type="button" class="btn-soft" id="exportCsv">Export CSV</button>
-          <button type="button" class="btn" id="submitBtn">Save Membership</button>
+        <div class="actions">
+          <button type="submit" class="btn">Sign Up</button>
         </div>
       </form>
-
-      <section class="success-card" id="successCard" aria-live="polite">
-        <h3>Membership saved</h3>
-        <p>This registration has been added to the local record list for this browser and is ready for export.</p>
-        <div class="summary-grid" id="summaryGrid"></div>
-      </section>
-
-      <section class="records">
-        <div class="records-head">
-          <div>
-            <h3>Saved registrations</h3>
-            <p>Records stay in this browser once the page is hosted on GitHub Pages.</p>
-          </div>
-
-          <div class="small-actions">
-            <button type="button" class="btn-soft" id="exportJson">Export JSON</button>
-            <button type="button" class="btn-soft" id="clearAll">Clear All</button>
-          </div>
-        </div>
-
-        <div class="record-list" id="recordList"></div>
-        <div class="footnote">For long-term private membership management, connect this page later to Google Sheets or another private storage system.</div>
-      </section>
     </section>
   </main>
 
   <script>
-    const STORAGE_KEY = 'aphrodite_hills_adult_memberships_2026';
     const form = document.getElementById('membershipForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const exportCsvBtn = document.getElementById('exportCsv');
-    const exportJsonBtn = document.getElementById('exportJson');
-    const clearAllBtn = document.getElementById('clearAll');
-    const recordList = document.getElementById('recordList');
-    const successCard = document.getElementById('successCard');
-    const summaryGrid = document.getElementById('summaryGrid');
-    const signatureStatus = document.getElementById('signatureStatus');
-
-    let records = loadRecords();
-
-    function loadRecords() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      } catch {
-        return [];
-      }
-    }
-
-    function saveRecords() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-    }
-
-    function escapeHtml(value) {
-      return String(value ?? '')
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
-    }
-
-    function renderRecords() {
-      if (!records.length) {
-        recordList.innerHTML = '<div class="empty">No adult memberships saved yet.</div>';
-        return;
-      }
-
-      recordList.innerHTML = records.map(record => `
-        <div class="record-row">
-          <div>
-            <strong>Member</strong>
-            <span>${escapeHtml(record.firstName)} ${escapeHtml(record.lastName)}</span>
-          </div>
-          <div>
-            <strong>Membership</strong>
-            <span>${escapeHtml(record.membershipLabel)}</span>
-          </div>
-          <div>
-            <strong>Saved</strong>
-            <span>${escapeHtml(new Date(record.createdAt).toLocaleString())}</span>
-          </div>
-          <button type="button" data-delete-id="${record.id}">Delete</button>
-        </div>
-      `).join('');
-    }
-
-    recordList.addEventListener('click', (event) => {
-      const deleteButton = event.target.closest('[data-delete-id]');
-      if (!deleteButton) return;
-      const id = deleteButton.getAttribute('data-delete-id');
-      records = records.filter(record => record.id !== id);
-      saveRecords();
-      renderRecords();
-    });
-
-    function getMembershipSelection() {
-      const selected = form.querySelector('input[name="membershipType"]:checked');
-      if (!selected) return null;
-      const [label, price] = selected.value.split('|');
-      return { label, price };
-    }
-
-    function validateForm() {
-      const requiredFields = [...form.querySelectorAll('input[required]')];
-
-      for (const field of requiredFields) {
-        if (field.type === 'radio') continue;
-
-        if (field.type === 'checkbox') {
-          if (!field.checked) {
-            alert('Please agree to the disclaimer before saving.');
-            field.focus();
-            return false;
-          }
-        } else if (!(field.value || '').trim()) {
-          const label = field.closest('.field, .consent-row')?.querySelector('.label')?.textContent || 'this field';
-          alert(`Please complete ${label}.`);
-          field.focus();
-          return false;
-        } else if (field.type === 'email' && !field.checkValidity()) {
-          alert('Please enter a valid email address.');
-          field.focus();
-          return false;
-        }
-      }
-
-      if (!getMembershipSelection()) {
-        alert('Please select a membership option.');
-        return false;
-      }
-
-      if (!hasSignature) {
-        alert('Please add a signature before saving.');
-        return false;
-      }
-
-      return true;
-    }
-
-    function buildRecord() {
-      const data = new FormData(form);
-      const membership = getMembershipSelection();
-
-      return {
-        id: String(Date.now()),
-        createdAt: new Date().toISOString(),
-        firstName: data.get('firstName')?.toString().trim() || '',
-        lastName: data.get('lastName')?.toString().trim() || '',
-        email: data.get('email')?.toString().trim() || '',
-        phone: data.get('phone')?.toString().trim() || '',
-        emergencyContact: data.get('emergency')?.toString().trim() || '',
-        dateOfBirth: data.get('dob')?.toString().trim() || '',
-        membershipLabel: membership?.label || '',
-        membershipPrice: membership?.price || '',
-        consent: !!data.get('consent'),
-        signatureCaptured: hasSignature,
-        signatureImage: signatureDataUrl
-      };
-    }
-
-    function renderSummary(record) {
-      summaryGrid.innerHTML = [
-        ['First name', record.firstName],
-        ['Last name', record.lastName],
-        ['Email', record.email],
-        ['Phone', record.phone],
-        ['Emergency contact', record.emergencyContact],
-        ['Date of birth', record.dateOfBirth],
-        ['Membership', `${record.membershipLabel} (€${Number(record.membershipPrice).toLocaleString()})`],
-        ['Consent', record.consent ? 'Agreed' : 'Not agreed']
-      ].map(([label, value]) => `
-        <div class="summary-item">
-          <strong>${escapeHtml(label)}</strong>
-          <span>${escapeHtml(value)}</span>
-        </div>
-      `).join('');
-
-      successCard.classList.add('show');
-    }
-
-    submitBtn.addEventListener('click', () => {
-      if (!validateForm()) return;
-      const record = buildRecord();
-      records.unshift(record);
-      saveRecords();
-      renderRecords();
-      renderSummary(record);
-      form.reset();
-      clearPad();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('firstName').focus();
-    });
-
-    function downloadFile(filename, content, type) {
-      const blob = new Blob([content], { type });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-    }
-
-    function recordsToCsv(rows) {
-      const headers = ['createdAt', 'firstName', 'lastName', 'email', 'phone', 'emergencyContact', 'dateOfBirth', 'membershipLabel', 'membershipPrice', 'consent', 'signatureCaptured'];
-      const esc = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
-      return [headers.join(','), ...rows.map(row => headers.map(header => esc(row[header])).join(','))].join('\n');
-    }
-
-    exportCsvBtn.addEventListener('click', () => {
-      if (!records.length) {
-        alert('No registrations saved yet.');
-        return;
-      }
-      downloadFile(`adult-memberships-${new Date().toISOString().slice(0,10)}.csv`, recordsToCsv(records), 'text/csv;charset=utf-8');
-    });
-
-    exportJsonBtn.addEventListener('click', () => {
-      if (!records.length) {
-        alert('No registrations saved yet.');
-        return;
-      }
-      downloadFile(`adult-memberships-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(records, null, 2), 'application/json;charset=utf-8');
-    });
-
-    clearAllBtn.addEventListener('click', () => {
-      if (!records.length) return;
-      if (!confirm('Clear all saved adult membership registrations from this browser?')) return;
-      records = [];
-      saveRecords();
-      renderRecords();
-    });
-
     const canvas = document.getElementById('signaturePad');
     const clearSignatureBtn = document.getElementById('clearSignature');
+    const signatureStatus = document.getElementById('signatureStatus');
     const ctx = canvas.getContext('2d');
+
     let drawing = false;
     let hasSignature = false;
-    let signatureDataUrl = '';
 
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect();
@@ -782,14 +451,62 @@
       if (!drawing) return;
       drawing = false;
       ctx.beginPath();
-      signatureDataUrl = canvas.toDataURL('image/png');
     }
 
     function clearPad() {
       hasSignature = false;
-      signatureDataUrl = '';
       drawSignatureGuide();
     }
+
+    function validateForm() {
+      const requiredFields = [...form.querySelectorAll('input[required]')];
+
+      for (const field of requiredFields) {
+        if (field.type === 'radio') continue;
+
+        if (field.type === 'checkbox') {
+          if (!field.checked) {
+            alert('Please agree to the disclaimer before signing up.');
+            field.focus();
+            return false;
+          }
+        } else if (!(field.value || '').trim()) {
+          const label = field.closest('.field')?.querySelector('.label')?.textContent || 'this field';
+          alert(`Please complete ${label}.`);
+          field.focus();
+          return false;
+        } else if (field.type === 'email' && !field.checkValidity()) {
+          alert('Please enter a valid email address.');
+          field.focus();
+          return false;
+        }
+      }
+
+      const selectedMembership = form.querySelector('input[name="membershipType"]:checked');
+      if (!selectedMembership) {
+        alert('Please select a membership option.');
+        return false;
+      }
+
+      if (!hasSignature) {
+        alert('Please add a signature before signing up.');
+        return false;
+      }
+
+      return true;
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!validateForm()) return;
+
+      alert('Thank you. Your membership registration is ready to be processed.');
+      form.reset();
+      clearPad();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('firstName').focus();
+    });
 
     canvas.addEventListener('pointerdown', startDrawing);
     canvas.addEventListener('pointermove', draw);
@@ -799,7 +516,6 @@
     clearSignatureBtn.addEventListener('click', clearPad);
     window.addEventListener('resize', resizeCanvas);
 
-    renderRecords();
     requestAnimationFrame(() => {
       resizeCanvas();
       document.getElementById('firstName').focus();
