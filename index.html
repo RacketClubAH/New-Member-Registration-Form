@@ -2,346 +2,808 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adult Membership Registration Form 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aphrodite Hills Adult Membership Registration 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f5f3ef;
-      --card:#fbfaf7;
-      --soft:#e7e1d7;
-      --border:#d8d0c4;
-      --text:#4a4742;
-      --muted:#7e786f;
-      --accent:#b8b0a2;
-      --heading:#6d675f;
-      --shadow:0 20px 50px rgba(50,40,30,.08);
-      --radius:18px;
+    :root {
+      --bg: #f4f1eb;
+      --surface: #fbf9f5;
+      --surface-2: #f1ece3;
+      --border: rgba(78, 69, 58, 0.16);
+      --divider: rgba(78, 69, 58, 0.10);
+      --text: #4a443d;
+      --muted: #7b7369;
+      --heading: #6a6358;
+      --accent: #8a7e6d;
+      --accent-dark: #655b4e;
+      --success: #315a45;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      --shadow: 0 18px 48px rgba(40, 30, 18, 0.08);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', Arial, sans-serif;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-      padding:24px;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(165, 149, 124, 0.12), transparent 28%),
+        linear-gradient(180deg, #f7f4ee 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      padding: 24px;
     }
 
-    .page{
-      max-width:900px;
-      margin:0 auto;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:28px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
+    button, input, textarea { font: inherit; }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      background: rgba(251, 249, 245, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
     }
 
-    .inner{
-      padding:32px;
+    .top {
+      padding: 32px 32px 18px;
+      text-align: center;
     }
 
-    .logo-wrap{
-      text-align:center;
-      padding-top:12px;
-      padding-bottom:8px;
+    .real-logo {
+      display: block;
+      width: min(100%, 430px);
+      height: auto;
+      margin: 0 auto 6px;
+      object-fit: contain;
     }
 
-    .real-logo{
-      display:block;
-      width:min(100%, 340px);
-      height:auto;
-      margin:0 auto;
-      object-fit:contain;
+    .title-bar {
+      background: #dcd6cb;
+      color: #666057;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 15px 18px;
+      border-top: 1px solid rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(78,69,58,0.06);
+      text-align: center;
     }
 
-    .title-bar{
-      margin-top:18px;
-      background:#d9d4ca;
-      color:#6f6962;
-      text-align:center;
-      padding:14px 18px;
-      font-weight:600;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-size:14px;
+    .content {
+      padding: 28px 32px 32px;
+      display: grid;
+      gap: 26px;
     }
 
-    form{
-      padding-top:28px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      margin-bottom:20px;
+    .field, .panel, .success-card, .records {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
     }
 
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
+    .field {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 92px;
     }
 
-    .field.full{
-      grid-column:1 / -1;
-    }
+    .field.full { grid-column: 1 / -1; }
 
-    label{
-      font-size:14px;
-      color:var(--heading);
-      font-weight:500;
+    .label {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
     }
 
     input[type="text"],
     input[type="email"],
     input[type="tel"],
-    input[type="date"]{
-      width:100%;
-      min-height:52px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px 16px;
-      background:white;
-      color:var(--text);
-      font-size:16px;
-      outline:none;
+    input[type="date"] {
+      width: 100%;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 500;
+      min-height: 34px;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
-    input:focus{
-      border-color:#b6aa95;
-      box-shadow:0 0 0 3px rgba(182,170,149,.15);
+    input::placeholder { color: #a49b8f; }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 14px;
     }
 
-    .section{
-      margin-top:28px;
+    .panel {
+      padding: 22px;
     }
 
-    .section h2{
-      margin:0 0 14px;
-      font-size:16px;
-      color:var(--heading);
-      font-weight:700;
+    .membership-list {
+      display: grid;
+      gap: 12px;
     }
 
-    .membership-list{
-      display:grid;
-      gap:12px;
+    .membership-option {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--surface-2);
+      border: 1px solid rgba(78,69,58,0.08);
     }
 
-    .membership-option{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      gap:14px;
-      align-items:center;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px 16px;
-      background:white;
+    .membership-option input {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--accent-dark);
     }
 
-    .membership-option input{
-      width:22px;
-      height:22px;
-      accent-color:#8d8579;
+    .membership-option strong {
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 600;
     }
 
-    .membership-name{
-      font-size:15px;
-      color:var(--text);
-      font-weight:600;
+    .membership-option span {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
     }
 
-    .membership-price{
-      font-size:15px;
-      color:var(--muted);
-      font-weight:600;
-      white-space:nowrap;
+    .disclaimer-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+      background: var(--surface-2);
+      border: 1px solid rgba(78,69,58,0.08);
+      border-radius: 14px;
+      padding: 16px;
     }
 
-    .disclaimer-box{
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:#fcfbf8;
-      padding:18px;
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #fff;
+      border: 1px solid rgba(78,69,58,0.10);
+      border-radius: 14px;
     }
 
-    .disclaimer-title{
-      margin:0 0 10px;
-      font-size:15px;
-      font-weight:700;
-      color:var(--heading);
-      text-transform:uppercase;
-      letter-spacing:.05em;
+    .consent-row input {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      accent-color: var(--accent-dark);
+      flex: 0 0 auto;
     }
 
-    .disclaimer-text{
-      font-size:14px;
-      color:var(--text);
-      margin:0;
+    .consent-row label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
     }
 
-    .consent{
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      margin-top:18px;
-      padding:14px 16px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:white;
+    .signature-head,
+    .records-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
 
-    .consent input{
-      width:22px;
-      height:22px;
-      margin-top:2px;
-      accent-color:#8d8579;
-      flex:0 0 auto;
+    .helper {
+      font-size: 12px;
+      color: var(--muted);
     }
 
-    .consent label{
-      margin:0;
-      font-size:15px;
-      color:var(--text);
-      font-weight:500;
+    canvas {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(241,236,227,0.9));
+      border: 1px dashed rgba(101,91,78,0.22);
+      border-radius: 14px;
+      touch-action: none;
+      display: block;
     }
 
-    .actions{
-      margin-top:28px;
-      display:flex;
-      justify-content:flex-end;
+    .actions,
+    .small-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    button{
-      border:0;
-      border-radius:999px;
-      background:#8c8477;
-      color:white;
-      min-height:52px;
-      padding:0 22px;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer;
+    .btn,
+    .btn-soft {
+      min-height: 50px;
+      border: 0;
+      border-radius: var(--radius-full);
+      padding: 0 20px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     }
 
-    button:hover{
-      background:#746d62;
+    .btn:hover,
+    .btn-soft:hover { transform: translateY(-1px); }
+
+    .btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fffdf9;
+      box-shadow: 0 10px 24px rgba(79, 66, 50, 0.12);
     }
 
-    @media (max-width: 700px){
-      body{padding:0}
-      .page{border-radius:0}
-      .inner{padding:20px}
-      .grid{grid-template-columns:1fr}
-      .membership-option{
-        grid-template-columns:auto 1fr;
-      }
-      .membership-price{
-        grid-column:2;
-      }
-      .actions{
-        justify-content:stretch;
-      }
-      button{
-        width:100%;
-      }
-      .real-logo{
-        width:min(100%, 280px);
-      }
+    .btn-soft {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .success-card {
+      padding: 20px;
+      display: none;
+      gap: 14px;
+    }
+
+    .success-card.show { display: grid; }
+
+    .success-card h3,
+    .records h3 {
+      font-family: var(--font-display);
+      font-size: 30px;
+      color: var(--heading);
+      line-height: 1;
+    }
+
+    .success-card p,
+    .records p { color: var(--muted); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .summary-item,
+    .record-row {
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--surface-2);
+      border: 1px solid rgba(78,69,58,0.08);
+    }
+
+    .summary-item strong,
+    .record-row strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .summary-item span,
+    .record-row span {
+      font-size: 14px;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .records {
+      padding: 22px;
+    }
+
+    .record-list {
+      display: grid;
+      gap: 12px;
+      max-height: 280px;
+      overflow: auto;
+    }
+
+    .record-row {
+      display: grid;
+      grid-template-columns: 1.3fr 1.2fr 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .record-row button {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: var(--radius-full);
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .empty {
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--surface-2);
+      border-radius: 14px;
+      border: 1px dashed rgba(78,69,58,0.14);
+    }
+
+    .footnote {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 0; }
+      .page { border-radius: 0; }
+      .content, .top { padding-left: 18px; padding-right: 18px; }
+      .grid, .summary-grid, .record-row { grid-template-columns: 1fr; }
+      .membership-option { grid-template-columns: auto 1fr; }
+      .membership-option span { grid-column: 2; }
+      .signature-head, .records-head, .actions { flex-direction: column; align-items: stretch; }
+      .btn, .btn-soft { width: 100%; }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="inner">
-      <div class="logo-wrap">
-        <img src="./AH Full Logo - RGB Bronze.png" alt="Aphrodite Hills logo" class="real-logo">
-      </div>
+    <header class="top">
+      <img src="./AH Full Logo - RGB Bronze.png" alt="Aphrodite Hills logo" class="real-logo" />
+    </header>
 
-      <div class="title-bar">Adult Membership Registration Form 2026</div>
+    <div class="title-bar">Adult Membership Registration Form 2026</div>
 
-      <form>
+    <section class="content">
+      <form id="membershipForm" novalidate>
         <div class="grid">
           <div class="field">
-            <label for="firstName">First Name</label>
-            <input id="firstName" name="firstName" type="text" required>
+            <label class="label" for="firstName">First Name</label>
+            <input id="firstName" name="firstName" type="text" required placeholder="First name" />
           </div>
 
           <div class="field">
-            <label for="lastName">Last Name</label>
-            <input id="lastName" name="lastName" type="text" required>
+            <label class="label" for="lastName">Last Name</label>
+            <input id="lastName" name="lastName" type="text" required placeholder="Last name" />
           </div>
 
           <div class="field full">
-            <label for="email">Email Address</label>
-            <input id="email" name="email" type="email" required>
+            <label class="label" for="email">Email Address</label>
+            <input id="email" name="email" type="email" required placeholder="name@example.com" />
           </div>
 
           <div class="field full">
-            <label for="phone">Phone Number</label>
-            <input id="phone" name="phone" type="tel" required>
+            <label class="label" for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+357" />
           </div>
 
           <div class="field full">
-            <label for="emergency">Emergency Contact</label>
-            <input id="emergency" name="emergency" type="text" required>
+            <label class="label" for="emergency">Emergency Contact</label>
+            <input id="emergency" name="emergency" type="text" required placeholder="Name and phone number" />
           </div>
 
           <div class="field full">
-            <label for="dob">Date of Birth</label>
-            <input id="dob" name="dob" type="date" required>
+            <label class="label" for="dob">Date of Birth</label>
+            <input id="dob" name="dob" type="date" required />
           </div>
         </div>
 
-        <section class="section">
-          <h2>Tennis adult Membership (+18 Years)</h2>
-
+        <section class="panel" style="margin-top: 24px;">
+          <div class="section-title">Tennis adult Membership (+18 Years)</div>
           <div class="membership-list">
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT NON-PROPERTY OWNER €1,200" required>
-              <span class="membership-name">TENNIS ADULT NON-PROPERTY OWNER</span>
-              <span class="membership-price">€1,200</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT NON-PROPERTY OWNER|1200" required>
+              <strong>TENNIS ADULT NON-PROPERTY OWNER</strong>
+              <span>€1,200</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER SILVER €1,080">
-              <span class="membership-name">TENNIS ADULT PROPERTY OWNER SILVER</span>
-              <span class="membership-price">€1,080</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER SILVER|1080">
+              <strong>TENNIS ADULT PROPERTY OWNER SILVER</strong>
+              <span>€1,080</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER GOLD €1,020">
-              <span class="membership-name">TENNIS ADULT PROPERTY OWNER GOLD</span>
-              <span class="membership-price">€1,020</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER GOLD|1020">
+              <strong>TENNIS ADULT PROPERTY OWNER GOLD</strong>
+              <span>€1,020</span>
             </label>
           </div>
         </section>
 
-        <section class="section">
-          <div class="disclaimer-box">
-            <p class="disclaimer-title">Disclaimer</p>
-            <p class="disclaimer-text">
-              By ticking the box below, you confirm that you have read, understood and accepted the Membership Terms and Conditions, Rules and Regulations of Aphrodite Hills Tennis &amp; Spa Ltd, and agree to comply with them at all times. You also consent to Aphrodite Hills Tennis &amp; Spa Ltd sharing or transferring your personal information to our affiliated companies for the purpose of receiving information about news, events, activities, new products, services, advertising campaigns, and promotional activities. You also acknowledge that the Aphrodite Hills Tennis Academy may from time to time be filmed or photographed for publicity purposes, and you consent to your and/or your child’s personal image being used for promotional purposes.
-            </p>
+        <section class="panel" style="margin-top: 24px;">
+          <div class="section-title">Disclaimer</div>
+          <div class="disclaimer-text">
+            By ticking the box below, you confirm that you have read, understood and accepted the Membership Terms and Conditions, Rules and Regulations of Aphrodite Hills Tennis &amp; Spa Ltd, and agree to comply with them at all times. You also consent to Aphrodite Hills Tennis &amp; Spa Ltd sharing or transferring your personal information to our affiliated companies for the purpose of receiving information about news, events, activities, new products, services, advertising campaigns, and promotional activities. You also acknowledge that the Aphrodite Hills Tennis Academy may from time to time be filmed or photographed for publicity purposes, and you consent to your and/or your child’s personal image being used for promotional purposes.
           </div>
 
-          <div class="consent">
+          <div class="consent-row">
             <input id="consent" name="consent" type="checkbox" required>
             <label for="consent">I have read and agree to the above disclaimer.</label>
           </div>
         </section>
 
-        <div class="actions">
-          <button type="submit">Submit Registration</button>
+        <section class="panel" style="margin-top: 24px;">
+          <div class="signature-head">
+            <div>
+              <div class="section-title" style="margin-bottom: 4px;">Signature</div>
+              <div class="helper" id="signatureStatus">Please sign before submitting.</div>
+            </div>
+
+            <div class="small-actions">
+              <button type="button" class="btn-soft" id="clearSignature">Clear Signature</button>
+            </div>
+          </div>
+
+          <canvas id="signaturePad"></canvas>
+        </section>
+
+        <div class="actions" style="margin-top: 24px;">
+          <button type="button" class="btn-soft" id="exportCsv">Export CSV</button>
+          <button type="button" class="btn" id="submitBtn">Save Membership</button>
         </div>
       </form>
-    </div>
+
+      <section class="success-card" id="successCard" aria-live="polite">
+        <h3>Membership saved</h3>
+        <p>This registration has been added to the local record list for this browser and is ready for export.</p>
+        <div class="summary-grid" id="summaryGrid"></div>
+      </section>
+
+      <section class="records">
+        <div class="records-head">
+          <div>
+            <h3>Saved registrations</h3>
+            <p>Records stay in this browser once the page is hosted on GitHub Pages.</p>
+          </div>
+
+          <div class="small-actions">
+            <button type="button" class="btn-soft" id="exportJson">Export JSON</button>
+            <button type="button" class="btn-soft" id="clearAll">Clear All</button>
+          </div>
+        </div>
+
+        <div class="record-list" id="recordList"></div>
+        <div class="footnote">For long-term private membership management, connect this page later to Google Sheets or another private storage system.</div>
+      </section>
+    </section>
   </main>
+
+  <script>
+    const STORAGE_KEY = 'aphrodite_hills_adult_memberships_2026';
+    const form = document.getElementById('membershipForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const exportCsvBtn = document.getElementById('exportCsv');
+    const exportJsonBtn = document.getElementById('exportJson');
+    const clearAllBtn = document.getElementById('clearAll');
+    const recordList = document.getElementById('recordList');
+    const successCard = document.getElementById('successCard');
+    const summaryGrid = document.getElementById('summaryGrid');
+    const signatureStatus = document.getElementById('signatureStatus');
+
+    let records = loadRecords();
+
+    function loadRecords() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function saveRecords() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function renderRecords() {
+      if (!records.length) {
+        recordList.innerHTML = '<div class="empty">No adult memberships saved yet.</div>';
+        return;
+      }
+
+      recordList.innerHTML = records.map(record => `
+        <div class="record-row">
+          <div>
+            <strong>Member</strong>
+            <span>${escapeHtml(record.firstName)} ${escapeHtml(record.lastName)}</span>
+          </div>
+          <div>
+            <strong>Membership</strong>
+            <span>${escapeHtml(record.membershipLabel)}</span>
+          </div>
+          <div>
+            <strong>Saved</strong>
+            <span>${escapeHtml(new Date(record.createdAt).toLocaleString())}</span>
+          </div>
+          <button type="button" data-delete-id="${record.id}">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    recordList.addEventListener('click', (event) => {
+      const deleteButton = event.target.closest('[data-delete-id]');
+      if (!deleteButton) return;
+      const id = deleteButton.getAttribute('data-delete-id');
+      records = records.filter(record => record.id !== id);
+      saveRecords();
+      renderRecords();
+    });
+
+    function getMembershipSelection() {
+      const selected = form.querySelector('input[name="membershipType"]:checked');
+      if (!selected) return null;
+      const [label, price] = selected.value.split('|');
+      return { label, price };
+    }
+
+    function validateForm() {
+      const requiredFields = [...form.querySelectorAll('input[required]')];
+
+      for (const field of requiredFields) {
+        if (field.type === 'radio') continue;
+
+        if (field.type === 'checkbox') {
+          if (!field.checked) {
+            alert('Please agree to the disclaimer before saving.');
+            field.focus();
+            return false;
+          }
+        } else if (!(field.value || '').trim()) {
+          const label = field.closest('.field, .consent-row')?.querySelector('.label')?.textContent || 'this field';
+          alert(`Please complete ${label}.`);
+          field.focus();
+          return false;
+        } else if (field.type === 'email' && !field.checkValidity()) {
+          alert('Please enter a valid email address.');
+          field.focus();
+          return false;
+        }
+      }
+
+      if (!getMembershipSelection()) {
+        alert('Please select a membership option.');
+        return false;
+      }
+
+      if (!hasSignature) {
+        alert('Please add a signature before saving.');
+        return false;
+      }
+
+      return true;
+    }
+
+    function buildRecord() {
+      const data = new FormData(form);
+      const membership = getMembershipSelection();
+
+      return {
+        id: String(Date.now()),
+        createdAt: new Date().toISOString(),
+        firstName: data.get('firstName')?.toString().trim() || '',
+        lastName: data.get('lastName')?.toString().trim() || '',
+        email: data.get('email')?.toString().trim() || '',
+        phone: data.get('phone')?.toString().trim() || '',
+        emergencyContact: data.get('emergency')?.toString().trim() || '',
+        dateOfBirth: data.get('dob')?.toString().trim() || '',
+        membershipLabel: membership?.label || '',
+        membershipPrice: membership?.price || '',
+        consent: !!data.get('consent'),
+        signatureCaptured: hasSignature,
+        signatureImage: signatureDataUrl
+      };
+    }
+
+    function renderSummary(record) {
+      summaryGrid.innerHTML = [
+        ['First name', record.firstName],
+        ['Last name', record.lastName],
+        ['Email', record.email],
+        ['Phone', record.phone],
+        ['Emergency contact', record.emergencyContact],
+        ['Date of birth', record.dateOfBirth],
+        ['Membership', `${record.membershipLabel} (€${Number(record.membershipPrice).toLocaleString()})`],
+        ['Consent', record.consent ? 'Agreed' : 'Not agreed']
+      ].map(([label, value]) => `
+        <div class="summary-item">
+          <strong>${escapeHtml(label)}</strong>
+          <span>${escapeHtml(value)}</span>
+        </div>
+      `).join('');
+
+      successCard.classList.add('show');
+    }
+
+    submitBtn.addEventListener('click', () => {
+      if (!validateForm()) return;
+      const record = buildRecord();
+      records.unshift(record);
+      saveRecords();
+      renderRecords();
+      renderSummary(record);
+      form.reset();
+      clearPad();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('firstName').focus();
+    });
+
+    function downloadFile(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function recordsToCsv(rows) {
+      const headers = ['createdAt', 'firstName', 'lastName', 'email', 'phone', 'emergencyContact', 'dateOfBirth', 'membershipLabel', 'membershipPrice', 'consent', 'signatureCaptured'];
+      const esc = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
+      return [headers.join(','), ...rows.map(row => headers.map(header => esc(row[header])).join(','))].join('\n');
+    }
+
+    exportCsvBtn.addEventListener('click', () => {
+      if (!records.length) {
+        alert('No registrations saved yet.');
+        return;
+      }
+      downloadFile(`adult-memberships-${new Date().toISOString().slice(0,10)}.csv`, recordsToCsv(records), 'text/csv;charset=utf-8');
+    });
+
+    exportJsonBtn.addEventListener('click', () => {
+      if (!records.length) {
+        alert('No registrations saved yet.');
+        return;
+      }
+      downloadFile(`adult-memberships-${new Date().toISOString().slice(0,10)}.json`, JSON.stringify(records, null, 2), 'application/json;charset=utf-8');
+    });
+
+    clearAllBtn.addEventListener('click', () => {
+      if (!records.length) return;
+      if (!confirm('Clear all saved adult membership registrations from this browser?')) return;
+      records = [];
+      saveRecords();
+      renderRecords();
+    });
+
+    const canvas = document.getElementById('signaturePad');
+    const clearSignatureBtn = document.getElementById('clearSignature');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    let hasSignature = false;
+    let signatureDataUrl = '';
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, rect.width * ratio);
+      canvas.height = Math.max(1, rect.height * ratio);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(ratio, ratio);
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = '#655b4e';
+      drawSignatureGuide();
+    }
+
+    function drawSignatureGuide() {
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.strokeStyle = 'rgba(101,91,78,0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(24, rect.height - 34);
+      ctx.lineTo(rect.width - 24, rect.height - 34);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(123,115,105,0.85)';
+      ctx.font = '14px Inter';
+      ctx.fillText('Sign here', 24, rect.height - 42);
+      ctx.strokeStyle = '#655b4e';
+      ctx.lineWidth = 2.2;
+      if (!hasSignature) signatureStatus.textContent = 'Please sign before submitting.';
+    }
+
+    function getPointerPosition(event) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
+    }
+
+    function startDrawing(event) {
+      drawing = true;
+      const pos = getPointerPosition(event);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+      event.preventDefault();
+    }
+
+    function draw(event) {
+      if (!drawing) return;
+      const pos = getPointerPosition(event);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      hasSignature = true;
+      signatureStatus.textContent = 'Signature captured.';
+      event.preventDefault();
+    }
+
+    function stopDrawing() {
+      if (!drawing) return;
+      drawing = false;
+      ctx.beginPath();
+      signatureDataUrl = canvas.toDataURL('image/png');
+    }
+
+    function clearPad() {
+      hasSignature = false;
+      signatureDataUrl = '';
+      drawSignatureGuide();
+    }
+
+    canvas.addEventListener('pointerdown', startDrawing);
+    canvas.addEventListener('pointermove', draw);
+    canvas.addEventListener('pointerup', stopDrawing);
+    canvas.addEventListener('pointerleave', stopDrawing);
+    canvas.addEventListener('pointercancel', stopDrawing);
+    clearSignatureBtn.addEventListener('click', clearPad);
+    window.addEventListener('resize', resizeCanvas);
+
+    renderRecords();
+    requestAnimationFrame(() => {
+      resizeCanvas();
+      document.getElementById('firstName').focus();
+    });
+  </script>
 </body>
 </html>
