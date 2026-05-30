@@ -386,6 +386,7 @@
     const clearSignatureBtn = document.getElementById('clearSignature');
     const signatureStatus = document.getElementById('signatureStatus');
     const ctx = canvas.getContext('2d');
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxq64UomGnwaN0u76ntXGML-9FdgcIbAig7_rQzGNHCbP3g8taZV3gHvSfRae3fVyiX/exec";
 
     let drawing = false;
     let hasSignature = false;
@@ -496,16 +497,49 @@
       return true;
     }
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', async function(event) {
       event.preventDefault();
 
       if (!validateForm()) return;
 
-      alert('Thank you. Your membership registration is ready to be processed.');
-      form.reset();
-      clearPad();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.getElementById('firstName').focus();
+      const selectedMembership = form.querySelector('input[name="membershipType"]:checked');
+
+      const payload = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phoneNumber: document.getElementById('phone').value.trim(),
+        emergencyContact: document.getElementById('emergency').value.trim(),
+        dateOfBirth: document.getElementById('dob').value,
+        membershipType: selectedMembership ? selectedMembership.value : '',
+        disclaimerAgreed: document.getElementById('consent').checked,
+        signatureCaptured: hasSignature
+      };
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.error || 'Submission failed');
+        }
+
+        alert('Thank you. Your membership registration has been saved.');
+        form.reset();
+        clearPad();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('firstName').focus();
+      } catch (error) {
+        alert('There was a problem saving the membership. Please try again.');
+        console.error(error);
+      }
     });
 
     canvas.addEventListener('pointerdown', startDrawing);
