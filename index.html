@@ -51,28 +51,12 @@
       padding-bottom:8px;
     }
 
-    .logo-mark{
-      width:56px;
-      height:56px;
-      margin:0 auto 8px;
-      border:1px solid var(--border);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      color:var(--heading);
-      background:#f8f5f0;
-    }
-
-    .logo-mark svg{
-      width:28px;
-      height:28px;
-    }
-
-    .brand{
-      font-family:'Cormorant Garamond',serif;
-      font-size:28px;
-      color:var(--heading);
-      margin:0;
+    .real-logo{
+      display:block;
+      width:min(100%, 340px);
+      height:auto;
+      margin:0 auto;
+      object-fit:contain;
     }
 
     .title-bar{
@@ -267,6 +251,9 @@
       button{
         width:100%;
       }
+      .real-logo{
+        width:min(100%, 280px);
+      }
     }
   </style>
 </head>
@@ -274,15 +261,7 @@
   <main class="page">
     <div class="inner">
       <div class="logo-wrap">
-        <div class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 6c5.6 6.1 10 11.7 10 18.2A10 10 0 0 1 24 34.2a10 10 0 0 1-10-10C14 17.7 18.4 12.1 24 6Z"></path>
-            <path d="M24 15v18"></path>
-            <path d="M17 22c2.8 1.8 5.1 2.7 7 2.7 1.9 0 4.2-.9 7-2.7"></path>
-            <path d="M14 40h20"></path>
-          </svg>
-        </div>
-        <p class="brand">Aphrodite Hills</p>
+        <img src="./AH-Full-Logo-RGB-Bronze.jpg" alt="Aphrodite Hills logo" class="real-logo">
       </div>
 
       <div class="title-bar">Adult Membership Registration Form 2026</div>
