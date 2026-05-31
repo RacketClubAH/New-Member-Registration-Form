@@ -258,6 +258,11 @@
       box-shadow: 0 10px 24px rgba(79, 66, 50, 0.12);
     }
 
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
     .btn-soft {
       background: transparent;
       border: 1px solid var(--border);
@@ -374,7 +379,7 @@
         </section>
 
         <div class="actions">
-          <button type="submit" class="btn">Sign Up</button>
+          <button type="submit" class="btn" id="submitBtn">Sign Up</button>
         </div>
       </form>
     </section>
@@ -385,8 +390,9 @@
     const canvas = document.getElementById('signaturePad');
     const clearSignatureBtn = document.getElementById('clearSignature');
     const signatureStatus = document.getElementById('signatureStatus');
+    const submitBtn = document.getElementById('submitBtn');
     const ctx = canvas.getContext('2d');
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxq64UomGnwaN0u76ntXGML-9FdgcIbAig7_rQzGNHCbP3g8taZV3gHvSfRae3fVyiX/exec";
+    const SCRIPT_URL = "PASTE_YOUR_SCRIPT_URL_HERE";
 
     let drawing = false;
     let hasSignature = false;
@@ -513,8 +519,12 @@
         dateOfBirth: document.getElementById('dob').value,
         membershipType: selectedMembership ? selectedMembership.value : '',
         disclaimerAgreed: document.getElementById('consent').checked,
-        signatureCaptured: hasSignature
+        signatureCaptured: hasSignature,
+        signatureImage: hasSignature ? canvas.toDataURL('image/png') : ''
       };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
 
       try {
         const response = await fetch(SCRIPT_URL, {
@@ -525,20 +535,32 @@
           body: JSON.stringify(payload)
         });
 
-        const result = await response.json();
+        const rawText = await response.text();
+        let result = {};
 
-        if (!result.success) {
+        try {
+          result = JSON.parse(rawText);
+        } catch (parseError) {
+          throw new Error('The server did not return valid JSON.');
+        }
+
+        if (!response.ok || !result.success) {
           throw new Error(result.error || 'Submission failed');
         }
 
-        alert('Thank you. Your membership registration has been saved.');
+        const pdfMessage = result.pdfName ? `\nPDF created: ${result.pdfName}` : '';
+        alert(`Thank you. Registration saved.${pdfMessage}`);
+
         form.reset();
         clearPad();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         document.getElementById('firstName').focus();
       } catch (error) {
-        alert('There was a problem saving the membership. Please try again.');
+        alert(`There was a problem saving the membership.\n${error.message}`);
         console.error(error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign Up';
       }
     });
 
