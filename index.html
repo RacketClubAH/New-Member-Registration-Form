@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Aphrodite Hills Junior Membership Registration 2026</title>
+  <title>Aphrodite Hills Adult Membership Registration 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -310,15 +310,10 @@
 <body>
   <main class="page">
     <header class="top">
-      <img
-        src="../AH Full Logo - RGB Bronze.png"
-        alt="Aphrodite Hills logo"
-        class="real-logo"
-        onerror="this.onerror=null;this.src='https://www.aphroditehills.com/wp-content/uploads/2021/09/AH-Full-Logo-RGB-Bronze.png';"
-      />
+      <img src="./AH Full Logo - RGB Bronze.png" alt="Aphrodite Hills logo" class="real-logo" />
     </header>
 
-    <div class="title-bar">Junior Membership Registration Form 2026</div>
+    <div class="title-bar">Adult Membership Registration Form 2026</div>
 
     <section class="content">
       <form id="membershipForm" novalidate>
@@ -352,37 +347,27 @@
             <label class="label" for="dob">Date of Birth</label>
             <input id="dob" name="dob" type="date" required />
           </div>
-
-          <div class="field full">
-            <label class="label" for="parentOrTutorName">Parents or legal tutor Name</label>
-            <input id="parentOrTutorName" name="parentOrTutorName" type="text" required placeholder="Parent or legal tutor full name" />
-          </div>
-
-          <div class="field full">
-            <label class="label" for="parentOrTutorPhone">Parents or legal tutor Phone Number</label>
-            <input id="parentOrTutorPhone" name="parentOrTutorPhone" type="tel" required placeholder="+357" />
-          </div>
         </div>
 
         <section class="panel" style="margin-top: 24px;">
-          <div class="section-title">Tennis Junior Membership (17 Years and under)</div>
+          <div class="section-title">Tennis adult Membership (+18 Years)</div>
           <div class="membership-list">
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS JUNIOR NON-PROPERTY OWNER" required>
-              <strong>TENNIS JUNIOR NON-PROPERTY OWNER</strong>
-              <span>€200</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT NON-PROPERTY OWNER" required>
+              <strong>TENNIS ADULT NON-PROPERTY OWNER</strong>
+              <span>€1,200</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS JUNIOR PROPERTY OWNER SILVER">
-              <strong>TENNIS JUNIOR PROPERTY OWNER SILVER</strong>
-              <span>€180</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER SILVER">
+              <strong>TENNIS ADULT PROPERTY OWNER SILVER</strong>
+              <span>€1,080</span>
             </label>
 
             <label class="membership-option">
-              <input type="radio" name="membershipType" value="TENNIS JUNIOR PROPERTY OWNER GOLD">
-              <strong>TENNIS JUNIOR PROPERTY OWNER GOLD</strong>
-              <span>€170</span>
+              <input type="radio" name="membershipType" value="TENNIS ADULT PROPERTY OWNER GOLD">
+              <strong>TENNIS ADULT PROPERTY OWNER GOLD</strong>
+              <span>€1,020</span>
             </label>
           </div>
         </section>
@@ -396,7 +381,7 @@
 
             <p>By ticking the box below and signing this form, you confirm that you have read, understood and accepted the Membership Terms and Conditions, Rules and Regulations of Aphrodite Hills Tennis &amp; Spa Ltd / The Racket Club, and agree to comply with them at all times.</p>
 
-            <p>Annual membership is available to Cyprus residents only, is granted at the sole discretion of the Club, and is valid for 12 consecutive months from the agreed start date. Junior membership applies to players aged 17 years and under. Membership becomes active only upon receipt of full payment of all applicable fees, automatically expires at the end of the 12-month period unless renewed, is personal to the applicant, and may not be transferred, assigned, shared or lent to any third party.</p>
+            <p>Annual membership is available to Cyprus residents only, is granted at the sole discretion of the Club, and is valid for 12 consecutive months from the agreed start date. Membership becomes active only upon receipt of full payment of all applicable fees, automatically expires at the end of the 12-month period unless renewed, is personal to the applicant, and may not be transferred, assigned, shared or lent to any third party.</p>
 
             <p>All membership fees are payable in full upon registration and are strictly non-refundable. No refunds, credits or extensions will be granted for non-attendance, illness, relocation, travel restrictions or other personal circumstances. Membership fees, structure and benefits are subject to annual review and may change upon renewal.</p>
 
@@ -414,7 +399,7 @@
 
             <p>The Club may suspend or terminate membership without prior notice in cases of serious breach, non-payment, misconduct, abusive behaviour, damage to property, breach of rules or behaviour deemed detrimental to the Club. Smoking, narcotics and misuse of alcohol within Club premises are strictly prohibited. Members must comply with all The Racket Club rules and regulations at all times.</p>
 
-            <p>By purchasing membership and for the full duration of its validity, the parent or legal tutor confirms that the junior member is in good physical condition and medically fit to participate in tennis and related sporting activities. Participation is undertaken entirely at the member’s own risk, and the Club shall not be liable for injury, loss, damage or theft of personal property, except where liability cannot legally be excluded.</p>
+            <p>By purchasing membership and for the full duration of its validity, you confirm that you are in good physical condition and medically fit to participate in tennis and related sporting activities. Participation is undertaken entirely at your own risk, and the Club shall not be liable for injury, loss, damage or theft of personal property, except where liability cannot legally be excluded.</p>
 
             <p>You also consent to Aphrodite Hills Tennis &amp; Spa Ltd / The Racket Club collecting and processing your personal data in accordance with applicable data protection laws, and to sharing or transferring your personal information to affiliated companies for the purpose of receiving information about news, events, activities, new products, services, advertising campaigns and promotional activities.</p>
 
@@ -461,7 +446,7 @@
     const termsStatus = document.getElementById('termsStatus');
     const consentCheckbox = document.getElementById('consent');
     const ctx = canvas.getContext('2d');
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxULZUdoJgDdmuEuq2_GD5X6vWhXkMyYg1ag0qu99H9TKSAjAXjPpJpsoKt7ocqD2Nw-g/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzI_mp4jlfuJVv_iytgBX8_31wmhtnNA8CkjFn5Zng5kMlz_QZH5Dg5vuUJLNstIMrQ/exec";
 
     let drawing = false;
     let hasSignature = false;
@@ -615,13 +600,11 @@
         phoneNumber: document.getElementById('phone').value.trim(),
         emergencyContact: document.getElementById('emergency').value.trim(),
         dateOfBirth: document.getElementById('dob').value,
-        parentOrTutorName: document.getElementById('parentOrTutorName').value.trim(),
-        parentOrTutorPhoneNumber: document.getElementById('parentOrTutorPhone').value.trim(),
         membershipType: selectedMembership ? selectedMembership.value : '',
         disclaimerAgreed: consentCheckbox.checked,
         termsRead: termsRead,
         termsAcceptedAt: consentCheckbox.checked ? new Date().toISOString() : '',
-        termsVersion: '2026-Junior-Membership-v1',
+        termsVersion: '2026-Racket-Club-TC-v2',
         signatureCaptured: hasSignature,
         signatureImage: hasSignature ? canvas.toDataURL('image/png') : ''
       };
